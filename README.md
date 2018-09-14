@@ -1,4 +1,4 @@
-# Anisble Worksops
+# Anisble Workshops
 Repository contains all materials needed for ansible workshops series.
 
 Brainstormed topics:
