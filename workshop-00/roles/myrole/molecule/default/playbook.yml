@@ -1,0 +1,27 @@
+---
+- name: Converge
+  hosts: all
+
+  #
+  # apply this role by relative path
+  #
+  roles:
+    - role: ../../../
+
+  #
+  # tasks to run before converge
+  # ... coud be used to prepare env and add some hacks
+  pre_tasks:
+    - name: enable epel repository
+      #shell: yum install -y epel-release
+      yum: name=epel-release state=installed
+    #- name: update os
+    #  shell: yum update -y
+
+  #
+  # tasks to run during converge
+  # ... could be used to prove env ok
+  tasks:
+    - name: hosts file is present
+      shell: test -f /etc/hosts
+      changed_when: False

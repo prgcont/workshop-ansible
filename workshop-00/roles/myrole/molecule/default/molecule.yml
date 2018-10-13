@@ -1,0 +1,42 @@
+---
+
+dependency:
+  name: galaxy
+
+driver:
+  name: docker
+
+lint:
+  name: yamllint
+  enabled: False
+
+platforms:
+  - name: instance
+
+    # WITH EL6
+    #image: centos:6
+
+    # WITH EL7 WITHOUT SYSTEMD
+    #image: centos:7
+
+    # WITH EL7 WITH SYSTEMD
+    image: centos/systemd:latest
+    command: /sbin/init
+    capabilities:
+      - SYS_ADMIN
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+    enabled: False
+
+scenario:
+  name: default
+
+#verifier:
+#  name: testinfra
+#  lint:
+#    name: flake8

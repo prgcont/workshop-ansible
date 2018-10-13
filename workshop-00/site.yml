@@ -1,0 +1,14 @@
+---
+
+###
+- hosts: all
+
+  remote_user: root
+
+  tasks:
+    - name: demotask with shell command
+      shell: hostname -f
+      changed_when: False
+
+  roles:
+    - role: myrole

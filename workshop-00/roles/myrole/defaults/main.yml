@@ -1,0 +1,4 @@
+myvar: defaultvalue
+
+# EXPECTED SECRETS:
+# * mysecret
