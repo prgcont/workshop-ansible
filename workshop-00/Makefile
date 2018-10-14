@@ -14,7 +14,7 @@ test:
 	for td in roles/* ; do cd $$td && make test ; done
 
 workshop-prep:
-	vagrant destroy || true
+	-vagrant destroy
 	vagrant up
 	vagrant provision
 	cd roles/myrole && make test

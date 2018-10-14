@@ -70,8 +70,8 @@ Vagrant.configure(2) do |config|
   # SHELL
 
   # https://app.vagrantup.com/centos/boxes/7
-  #config.vm.box = "centos/7"
-  config.vm.box = "centos/7.5.1804"
+  config.vm.box = "centos/7"
+  config.vm.box_version = "1804.02"
   #config.vm.define "vag-ansible-local-dev-1"
 
   config.vm.provider "virtualbox" do |v|
@@ -109,7 +109,7 @@ Vagrant.configure(2) do |config|
     #ansible.become_user = "root"
     #ansible.become_method = "sudo"
     #ansible.become_flags = "-s"
-    
+
     #ansible.vault_password_file = ".vault-pass"
     ansible.raw_arguments = ["-e", "@vault.yml", "--vault-password-file", ".vault-pass"]
 

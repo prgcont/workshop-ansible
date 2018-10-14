@@ -20,7 +20,8 @@ platforms:
     #image: centos:7
 
     # WITH EL7 WITH SYSTEMD
-    image: centos/systemd:latest
+    #image: centos/systemd:latest
+    image: centos/systemd:7.5.1804
     command: /sbin/init
     capabilities:
       - SYS_ADMIN

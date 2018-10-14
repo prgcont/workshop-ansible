@@ -3,3 +3,6 @@ all:
 
 test:
 	molecule test
+
+clean:
+	-rm -rf /tmp/molecule/myrole/
