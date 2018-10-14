@@ -5,9 +5,9 @@ TODO: Abstract
 ## Topics
 TODO:
 
-## home preparation
+## Home preparation
 
-Because Ansible is unsupported to run from Windows boxes, and for the sake of unified environment during this workshop, we are going to use Vagrant and VirtualBox to create our testing environment.
+Because Ansible is unsupported to run from Windows boxes, and for the sake of unified environment during this workshop, we are going to use Vagrant and VirtualBox to create our testing environment. With Linux, MacOS or Windows, we will have the same environment.
 
 ### Tasks:
 - get vagrant and virtualbox installed on your computer TODO - documentation link
@@ -17,7 +17,7 @@ Because Ansible is unsupported to run from Windows boxes, and for the sake of un
 	vagrant box add geerlingguy/centos7
 	```
 
-## Workshop environment creation
+## Workshop environment prepration
 
 ### Info:
 Here are basic vagrant controls:
@@ -30,8 +30,8 @@ vagrant ssh ubuntu  # ssh into VM ubuntu using authentication preset by vagrant
 
 ### Tasks:
 - create empty directory for this workshop
-- download vagrantfile for this workshop into your working directory TODO - link
-- start up your vagrant VMs defined in Vagrantfile
+- download `Vagrantfile` for this workshop into your working directory TODO - link
+- start up your vagrant VMs defined in `Vagrantfile`
 - check that you can SSH from your hypervisor into both of your VMs
 - check that synced-folders are working
 
