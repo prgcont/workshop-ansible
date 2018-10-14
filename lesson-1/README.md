@@ -141,7 +141,7 @@ expand your playbook to:
 
 ## End of workshop part
 -------
-## Best-practises show-off
+## Best-practices show-off
 - Ansible ARA
 - ansible-cmdb
 - molecule
