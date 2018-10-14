@@ -8,7 +8,7 @@ Vagrant.configure("2") do |config|
     ubuntu.vm.synced_folder "./data-ubuntu", "/vagrant_data", create: true
     ubuntu.vm.provision "shell", inline: <<-SHELL
       apt-get update
-      apt-get install -y ansible vim
+      apt-get install -y ansible vim mc
     SHELL
   end
 

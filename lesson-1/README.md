@@ -41,7 +41,7 @@ For the sake of this workshop of course ;-)
 Now we have:
 - your physical machine, used only for web browsing and ping tests
 - virtual machine `lesson-1_ubuntu` used to run ansible to control both VM
-- virtual machine `lesson-1_centos` to be controlled by ansible 
+- virtual machine `lesson-1_centos` to be controlled by ansible
 - new directories `data-centos` and `data-ubuntu` next to Vagrantfile mounted into your VMs in `/vagrant_data/`
 
 ## boring theory
@@ -121,4 +121,29 @@ Remind yourself that:
 - now you can achieve the same result as before by running `ansible-playbook bob_the_user.yml`
 - also you can see that there were changes because of the change of user's comment
 
-## expand your playbook
+## 1st Snack-break
+
+-------
+
+expand your playbook to:
+- rewrite your playbook to dynamic (just bash echo the same things)
+- install nginx
+- install firewall
+- set nginx vhost and htpasswd (secrets, vault)
+- enable nginx-vhost (handlers, idempotency)
+- enable HTTP traffic (wait_for)
+- create static website (jinja, variables, facts, lookups)
+- add notification to monitoring/logging system on website change
+- customize website to include ASn and IP (custom fact script and ipinfo.io)
+- generate description of server properties (-m setup and dokuwiki-formatted jinja)
+
+
+## End of workshop part
+-------
+## Best-practises show-off
+- Ansible ARA
+- ansible-cmdb
+- molecule
+- vagrant and ansible
+
+
