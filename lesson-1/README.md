@@ -71,14 +71,14 @@ Remind yourself that:
 ## ansible ad-hoc mode
 
 ### Tasks:
-- cd into /vagrant_data on VM `lesson-1_ubuntu`
+- cd into `/vagrant_data` on VM `lesson-1_ubuntu`
 - verify that both your VM's are reachable by ansible with `ansible all --inventory "10.11.12.14,10.11.12.15" -m ping`
-- use ansible ad-hoc mode to create unpriviledged system user `bob` with `/bin/bash` login shell and generate ssh key for him on both VMs with one task
-	- `ansible all --inventory "10.11.12.14,10.11.12.15" -m user -a 'name=bob shell=/bin/bash generate_ssh_key=yes' --become`
+- use ansible ad-hoc mode to create unpriviledged system user `bob` with `/bin/bash` login shell, and generate ssh key for him on both VMs with one task
+	- `ansible all --inventory "10.11.12.14,10.11.12.15" -m user -a 'name=bob shell=/bin/bash generate_ssh_key=yes'`
 
 ## write down previous task's configuration
 
-"Write it down, so you can remeber it, so you can commit it, so you can reuse it, so you can share it, so you can backup it, so you can test it."
+"Write it down, so you don't have to remeber it, so you can commit it, so you can reuse it, so you can share it, so you can backup it, so you can test it."
 
 ### Tasks:
 
@@ -108,7 +108,6 @@ Remind yourself that:
 - feel free to use "expanded" form
 	```
 	---
-	---
 	- hosts: all
 	  tasks:
 		- name: Create the user (or whatever comment you want)
@@ -123,4 +122,3 @@ Remind yourself that:
 - also you can see that there were changes because of the change of user's comment
 
 ## expand your playbook
-
