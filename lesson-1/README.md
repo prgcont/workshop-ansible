@@ -39,11 +39,59 @@ vagrant ssh ubuntu  # ssh into VM ubuntu using authentication preset by vagrant
 
 For the sake of this workshop of course ;-)
 
+Here is the resulting topology:
+```
++-----------------------------------------------------------------------------------------+
+|                                                                                         |
+|                                            Physical Laptop                              |
+|                                                                                         |
+|                      ./  +-+-->  ./Vagrantfile +-------------------->   Vagrant         |
+|                            |                                                            |
+|                            +-->  ./data-centos <------+                    +            |
+|                            |                          |                    |            |
+|                            +-->  ./data-ubuntu <---+  |                    |            |
+|                                                    |  |                    |            |
+|                                                    |  |                    |            |
+|                      +-----------------------------+  |                    |            |
+|                      |                                |                    |            |
+|                      |                                |                    |            |
+|   +---------------------------------------------------------------------------------+   |
+|   |                  |                                |                    |        |   |
+|   |  +-----------------------+   +------------------------+                v        |   |
+|   |  |  VM Ubuntu    |       |   | VM CentOS          |   |                         |   |
+|   |  |               |       |   |                    |   |            VirtualBox   |   |
+|   |  |               |       |   |                    |   |                         |   |
+|   |  |               |       |   |                    v   |                         |   |
+|   |  |               v       |   |                        |                         |   |
+|   |  |                       |   |                        |                         |   |
+|   |  |  +----------------+   |   | +------------------+   |                         |   |
+|   |  |  |  /vagrant_data |   |   | | /vagrant_data    |   |                         |   |
+|   |  |  +------+---------+   |   | +------------------+   |                         |   |
+|   |  |         |             |   |                        |                         |   |
+|   |  |  +------v---------+   |   |                        |                         |   |
+|   |  |  | Ansible        |   |   |                        |                         |   |
+|   |  |  +------+---------+   |   |                        |                         |   |
+|   |  |         |             |   |                        |                         |   |
+|   |  |         |             |   |                        |                         |   |
+|   |  |         +-------------------->                     |                         |   |
+|   |  |         |             |   |                        |                         |   |
+|   |  |         +--------->   |   |                        |                         |   |
+|   |  |                       |   |                        |                         |   |
+|   |  |                       |   |                        |                         |   |
+|   |  +-----------------------+   +------------------------+                         |   |
+|   |                                                                                 |   |
+|   +---------------------------------------------------------------------------------+   |
+|                                                                                         |
+|                                                                                         |
++-----------------------------------------------------------------------------------------+
+```
+
 Now we have:
 - your physical machine, used only for web browsing and ping tests
 - virtual machine `lesson-1_ubuntu` used to run ansible to control both VM
 - virtual machine `lesson-1_centos` to be controlled by ansible
 - new directories `data-centos` and `data-ubuntu` next to Vagrantfile mounted into your VMs in `/vagrant_data/`
+
 
 ## boring theory
 
