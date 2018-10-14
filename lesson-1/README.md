@@ -127,8 +127,8 @@ Remind yourself that:
 
 expand your playbook to:
 - rewrite your playbook to dynamic (just bash echo the same things)
-- install nginx
-- install firewall
+- install nginx (conditions, OS dependency)
+- install firewall (add pkg tag, to just go through installation steps)
 - set nginx vhost and htpasswd (secrets, vault)
 - enable nginx-vhost (handlers, idempotency)
 - enable HTTP traffic (wait_for)
