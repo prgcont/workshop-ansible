@@ -138,10 +138,32 @@ expand your playbook to:
 - customize website to include ASn and IP (custom fact script and ipinfo.io)
 - generate description of server properties (-m setup and dokuwiki-formatted jinja)
 
+- jinja filter `is changed`
+- blocks and try-except
+- galaxy??
+	- put galaxy roles in separate folder
+
 
 ## End of workshop part
 -------
 ## Best-practices show-off
+- sane default variables?
+- ansible_managed variable in all your files
+- naming:
+	- do not use plural
+	- stick with `-` or `_`
+	- use sane names for your task (there will be role name prefix)
+	- prefix vaulted variables with `vault_hostname/groupname_` and reference unvaulted variable to it
+- demand idempotency
+	- use `changed_when` and `check_mode` args
+	- no shell or command modules when there is another way
+	- use args `creates` and `removes`
+	- one run to provision
+- define role purpose in role README (one role = one goal)
+- different environments (dev/test/stag/prod) should be approached equally
+- no plaintext secrets versus versioned secrets
+- pipelining
+- ansible-console
 - Ansible ARA
 - ansible-cmdb
 - molecule
