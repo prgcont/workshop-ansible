@@ -30,7 +30,7 @@ vagrant ssh ubuntu # ssh into VM ubuntu using authentication preset by vagrant
 ### Tasks:
 - create empty directory for this workshop
 - download vagrantfile for this workshop into your working directory TODO - link
-- start up your vagrant VMs according to Vagrantfile
+- start up your vagrant VMs defined in Vagrantfile
 - check that you can SSH from your hypervisor into both of your VMs
 - check that synced-folders are working
 
@@ -38,33 +38,89 @@ vagrant ssh ubuntu # ssh into VM ubuntu using authentication preset by vagrant
 
 For the sake of this workshop of course ;-)
 
-We have created:
+Now we have:
 - your physical machine, used only for web browsing and ping tests
 - virtual machine `lesson-1_ubuntu` used to run ansible to control both VM
 - virtual machine `lesson-1_centos` to be controlled by ansible 
 - new directories `data-centos` and `data-ubuntu` next to Vagrantfile mounted into your VMs in `/vagrant_data/`
 
-## boring theory during `vagrant up`
+## boring theory
 
-Mention:
-- SSH connection
-- authentication using PAM
-- python requirements
-- terminology intro (module, task, playbook, role)
+Let's wait for `vagrant up` to finish
+
+Remind yourself that:
+- Ansible is using SSH connections for communication by default
+- Ansible authentication is done as SSH authentication
+- Ansible requires python
+- Ansible uses terminology:
+	- inventory - list of your computers and their "settings"
+	- module - abstract function covering basic system task, providing diff/check/idempotency/exception handling
+	- task - instance of module with parameters, loops, conditions
+	- playbook - sequence of tasks in defined order
+	- role - playbook converted into a library to provide high level function (like LAMP server installation, Apache VirtualHost installation, Drupal upgrade, ...)
+
+## set up SSH for connections
+
+### Tasks:
+
+- set-up ssh-key authentication
+	- `ssh-keygen` leave default answers in wizard
+	- `cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys` copy public key to allow access to ubuntu VM
+	- `ssh-copy-id 10.11.12.15` copy public key to allow access to centos VM
 
 ## ansible ad-hoc mode
 
-- First babystep, so use ansible ad-hoc mode, without any other files to:
-- create new system user without comment
+### Tasks:
+- cd into /vagrant_data on VM `lesson-1_ubuntu`
+- verify that both your VM's are reachable by ansible with `ansible all --inventory "10.11.12.14,10.11.12.15" -m ping`
+- use ansible ad-hoc mode to create unpriviledged system user `bob` with `/bin/bash` login shell and generate ssh key for him on both VMs with one task
+	- `ansible all --inventory "10.11.12.14,10.11.12.15" -m user -a 'name=bob shell=/bin/bash generate_ssh_key=yes' --become`
 
 ## write down previous task's configuration
 
-- write it down, so you can remeber it, so you can commit it, so you can reuse it, so you can share it, so you can backup it, so you can test it
+"Write it down, so you can remeber it, so you can commit it, so you can reuse it, so you can share it, so you can backup it, so you can test it."
 
-- create inventory file
-- create playbook with one task
-- create vars file (just generic vars file)
+### Tasks:
+
+- create inventory file `hosts` in INI-style containing both VMs in group `vm` with some human-readable names, but don't drop info about tteir address
+	```
+	[vm]
+	ubuntu ansible_host=10.11.12.14
+	centos ansible_host=10.11.12.15
+	```
+- tell ansible about your hosts file by customizing default settings ...
+	- `cp /etc/ansible/ansible.cfg ./`
+	- ... to point to your inventory file
+		```
+		...
+		[defaults]
+		inventory = hosts
+		...
+		```
+- create playbook with one task `bob_the_user.yml`, but add comment for him
+	```
+	---
+	- hosts: all
+	  tasks:
+		- name: Create the user (or whatever comment you want)
+		  user: name=bob shell=/bin/bash generate_ssh_key=yes comment="Bob the User"
+	```
+- feel free to use "expanded" form
+	```
+	---
+	---
+	- hosts: all
+	  tasks:
+		- name: Create the user (or whatever comment you want)
+		  user:
+			name: bob
+			shell: /bin/bash
+			generate_ssh_key:yes
+			comment: "Bob the User"
+	```
+
+- now you can achieve the same result as before by running `ansible-playbook bob_the_user.yml`
+- also you can see that there were changes because of the change of user's comment
 
 ## expand your playbook
 
-- 
