@@ -31,11 +31,17 @@ vagrant ssh ubuntu # ssh into VM ubuntu using authentication preset by vagrant
 - create empty directory for this workshop
 - download vagrantfile for this workshop into your working directory TODO - link
 - start up your vagrant VMs according to Vagrantfile
+- check that you can SSH from your hypervisor into both of your VMs
+- check that synced-folders are working
 
-There will be:
+### Why?
+
+For the sake of this workshop of course ;-)
+
+We have created:
 - your physical machine, used only for web browsing and ping tests
-- virtual machine lesson-1_ubuntu used to run ansible to control both VM
-- virtual machine lesson-1_centos to be controlled by ansible 
+- virtual machine `lesson-1_ubuntu` used to run ansible to control both VM
+- virtual machine `lesson-1_centos` to be controlled by ansible 
 - new directories `data-centos` and `data-ubuntu` next to Vagrantfile mounted into your VMs in `/vagrant_data/`
 
 ## boring theory during `vagrant up`
