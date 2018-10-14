@@ -13,7 +13,8 @@ Because Ansible is unsupported to run from Windows boxes, and for the sake of un
 - get vagrant and virtualbox installed on your computer TODO - documentation link
 - download your vagrant boxes in advance by running:
 	```
-	vagrant box add ubuntu/bionic64; vagrant box add geerlingguy/centos7
+	vagrant box add ubuntu/bionic64
+	vagrant box add geerlingguy/centos7
 	```
 
 ## Workshop environment creation
@@ -145,5 +146,3 @@ expand your playbook to:
 - ansible-cmdb
 - molecule
 - vagrant and ansible
-
-
