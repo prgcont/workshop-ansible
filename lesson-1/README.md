@@ -22,10 +22,10 @@ Because Ansible is unsupported to run from Windows boxes, and for the sake of un
 ### Info:
 Here are basic vagrant controls:
 ```
-vagrant up # start and provision VMs according to Vagrantfile
-vagrant destroy # stop and delete VMs according to Vagrantfile
-vagrant status # you can guess ...
-vagrant ssh ubuntu # ssh into VM ubuntu using authentication preset by vagrant
+vagrant up          # start and provision VMs according to Vagrantfile
+vagrant destroy     # stop and delete VMs according to Vagrantfile
+vagrant status      # you can guess ...
+vagrant ssh ubuntu  # ssh into VM ubuntu using authentication preset by vagrant
 ```
 
 ### Tasks:
