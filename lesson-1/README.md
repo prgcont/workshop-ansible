@@ -10,12 +10,16 @@ TODO:
 Because Ansible is unsupported to run from Windows boxes, and for the sake of unified environment during this workshop, we are going to use Vagrant and VirtualBox to create our testing environment. With Linux, MacOS or Windows, we will have the same environment.
 
 ### Tasks:
-- get vagrant and virtualbox installed on your computer TODO - documentation link
+- get vagrant and virtualbox installed on your computer
+  - [Vagrant](https://www.vagrantup.com/)
+  - [VirtualBox](https://www.virtualbox.org/)
 - download your vagrant boxes in advance by running:
 	```
 	vagrant box add ubuntu/bionic64
 	vagrant box add geerlingguy/centos7
 	```
+	
+Note: Be aware that there is a [known bug on some macOS versions](https://matthewpalmer.net/blog/2017/12/10/install-virtualbox-mac-high-sierra/index.html)
 
 ## Workshop environment prepration
 
@@ -44,6 +48,7 @@ Here is the resulting topology:
 +-----------------------------------------------------------------------------------------+
 |                                                                                         |
 |                                            Physical Laptop                              |
+
 |                                                                                         |
 |                      ./  +-+-->  ./Vagrantfile +-------------------->   Vagrant         |
 |                            |                                                            |
