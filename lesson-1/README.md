@@ -1,4 +1,4 @@
-# Anisble Workshop - Lesson 1
+# Ansible Workshop - Lesson 1
 
 ## Abstract
 
