@@ -41,7 +41,8 @@ vagrant ssh ubuntu  # ssh into VM ubuntu using authentication preset by vagrant
 
 ### Tasks:
 - create empty directory for this workshop
-- download `Vagrantfile` for this workshop into your working directory TODO - link
+- download `Vagrantfile` for this workshop into your working directory
+  [https://github.com/prgcont/workshop-ansible/blob/master/lesson-1/Vagrantfile]
 - start up your vagrant VMs defined in `Vagrantfile`
 - check that you can SSH from your hypervisor into both of your VMs
 - check that synced-folders are working
