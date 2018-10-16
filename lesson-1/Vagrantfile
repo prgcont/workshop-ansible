@@ -4,7 +4,7 @@ Vagrant.configure("2") do |config|
     ubuntu.vm.hostname = "ubuntu"
     ubuntu.vm.box = "ubuntu/bionic64"
     ubuntu.vm.network "private_network",
-      ip: "10.11.12.14"
+      ip: "172.29.29.14"
     ubuntu.vm.synced_folder "./data-ubuntu", "/vagrant_data", create: true
     ubuntu.vm.provision "shell", inline: <<-SHELL
       apt-get update
@@ -18,7 +18,7 @@ Vagrant.configure("2") do |config|
     # VirtualBox Guest Additions required to set network and synced folder 
     centos.vm.box = "geerlingguy/centos7"
     centos.vm.network "private_network",
-      ip: "10.11.12.15"
+      ip: "172.29.29.15"
     centos.vm.synced_folder "./data-centos", "/vagrant_data", create: true
     centos.vm.provision "shell", inline: <<-SHELL
       yum -y install vim 

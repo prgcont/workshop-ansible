@@ -120,15 +120,15 @@ Remind yourself that:
 - set-up ssh-key authentication
 	- `ssh-keygen` leave default answers in wizard
 	- `cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys` copy public key to allow access to ubuntu VM
-	- `ssh-copy-id 10.11.12.15` copy public key to allow access to centos VM
+	- `ssh-copy-id 172.29.29.15` copy public key to allow access to centos VM
 
 ## Ansible ad-hoc mode
 
 ### Tasks:
 - cd into `/vagrant_data` on VM `lesson-1_ubuntu`
-- verify that both your VM's are reachable by ansible with `ansible all --inventory "10.11.12.14,10.11.12.15" -m ping`
+- verify that both your VM's are reachable by ansible with `ansible all --inventory "172.29.29.14,172.29.29.15" -m ping`
 - use ansible ad-hoc mode to create unpriviledged system user `bob` with `/bin/bash` login shell, and generate ssh key for him on both VMs with one task
-	- `ansible all --inventory "10.11.12.14,10.11.12.15" -m user -a 'name=bob shell=/bin/bash generate_ssh_key=yes'`
+	- `ansible all --inventory "172.29.29.14,172.29.29.15" -m user -a 'name=bob shell=/bin/bash generate_ssh_key=yes'`
 
 ## Write down previous task's configuration
 
@@ -139,8 +139,8 @@ Remind yourself that:
 - create inventory file `hosts` in INI-style containing both VMs in group `vm` with some human-readable names, but don't drop info about tteir address
 	```
 	[vm]
-	ubuntu ansible_host=10.11.12.14
-	centos ansible_host=10.11.12.15
+	ubuntu ansible_host=172.29.29.14
+	centos ansible_host=172.29.29.15
 	```
 - tell ansible about your hosts file by customizing default settings ...
 	- `cp /etc/ansible/ansible.cfg ./`
