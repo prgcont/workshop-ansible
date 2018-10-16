@@ -1,0 +1,27 @@
+# -*- mode: ruby -*- vi: set ft=ruby :
+Vagrant.configure("2") do |config|
+  config.vm.define "ubuntu" do |ubuntu|
+    ubuntu.vm.hostname = "ubuntu"
+    ubuntu.vm.box = "ubuntu/bionic64"
+    ubuntu.vm.network "private_network",
+      ip: "172.29.29.14"
+    ubuntu.vm.synced_folder "./data-ubuntu", "/vagrant_data", create: true
+    ubuntu.vm.provision "shell", inline: <<-SHELL
+      apt-get update
+      apt-get install -y ansible vim mc
+    SHELL
+  end
+
+  config.vm.define "centos" do |centos|
+    centos.vm.hostname = "centos"
+    # We are going to use unofficial image, because official one does not contain
+    # VirtualBox Guest Additions required to set network and synced folder 
+    centos.vm.box = "geerlingguy/centos7"
+    centos.vm.network "private_network",
+      ip: "172.29.29.15"
+    centos.vm.synced_folder "./data-centos", "/vagrant_data", create: true
+    centos.vm.provision "shell", inline: <<-SHELL
+      yum -y install vim 
+    SHELL
+  end
+end
