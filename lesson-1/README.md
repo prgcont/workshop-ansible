@@ -18,7 +18,7 @@ Because Ansible is unsupported to run from Windows boxes, and for the sake of un
 	vagrant box add ubuntu/bionic64
 	vagrant box add geerlingguy/centos7
 	```
-	
+
 Note: Be aware that there is a [known bug on some macOS versions](https://matthewpalmer.net/blog/2017/12/10/install-virtualbox-mac-high-sierra/index.html)
 
 ## Workshop environment prepration
@@ -98,7 +98,7 @@ Now we have:
 - new directories `data-centos` and `data-ubuntu` next to Vagrantfile mounted into your VMs in `/vagrant_data/`
 
 
-## boring theory
+## Boring theory
 
 Let's wait for `vagrant up` to finish
 
@@ -113,7 +113,7 @@ Remind yourself that:
 	- playbook - sequence of tasks in defined order
 	- role - playbook converted into a library to provide high level function (like LAMP server installation, Apache VirtualHost installation, Drupal upgrade, ...)
 
-## set up SSH for connections
+## Set up SSH for connections
 
 ### Tasks:
 
@@ -122,7 +122,7 @@ Remind yourself that:
 	- `cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys` copy public key to allow access to ubuntu VM
 	- `ssh-copy-id 10.11.12.15` copy public key to allow access to centos VM
 
-## ansible ad-hoc mode
+## Ansible ad-hoc mode
 
 ### Tasks:
 - cd into `/vagrant_data` on VM `lesson-1_ubuntu`
@@ -130,7 +130,7 @@ Remind yourself that:
 - use ansible ad-hoc mode to create unpriviledged system user `bob` with `/bin/bash` login shell, and generate ssh key for him on both VMs with one task
 	- `ansible all --inventory "10.11.12.14,10.11.12.15" -m user -a 'name=bob shell=/bin/bash generate_ssh_key=yes'`
 
-## write down previous task's configuration
+## Write down previous task's configuration
 
 "Write it down, so you don't have to remeber it, so you can commit it, so you can reuse it, so you can share it, so you can backup it, so you can test it."
 
