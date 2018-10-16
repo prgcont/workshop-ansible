@@ -182,9 +182,6 @@ Remind yourself that:
 - now you can achieve the same result as before by running `ansible-playbook bob_the_user.yml`
 - also you can see that there were changes because of the change of user's comment
 
-
-## 1st Snack-break
-
 ## Expand your configuration
 
 ### Tasks:
@@ -204,7 +201,7 @@ Remind yourself that:
 - galaxy??
 	- put galaxy roles in separate folder
 
-## 2st Snack-break / End of workshop part
+## End of workshop part
 
 ## Best-practices show-off / Discussion
 - sane default variables?
