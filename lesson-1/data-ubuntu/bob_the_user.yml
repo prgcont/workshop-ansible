@@ -1,0 +1,5 @@
+---
+- hosts: all
+  tasks:
+    - name: Create the user (or whatever comment you want)
+      user: name=bob shell=/bin/bash generate_ssh_key=yes comment="Bob the User"
