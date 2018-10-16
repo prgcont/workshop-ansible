@@ -1,9 +1,16 @@
 # Anisble Workshop - Lesson 1
 
-TODO: Abstract
+## Abstract
 
-## Topics
-TODO:
+* Key concepts of Ansible
+* Inventory files
+* Gathering facts
+* Idempotent
+* Roles
+* Playbooks
+* Using Ansible to document your servers
+* Deploying simple static web page and nginx
+* Using Molecule to test your Ansible plays
 
 ## Home preparation
 
