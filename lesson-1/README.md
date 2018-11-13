@@ -8,9 +8,6 @@
 * Idempotent
 * Roles
 * Playbooks
-* Using Ansible to document your servers
-* Deploying simple static web page and nginx
-* Using Molecule to test your Ansible plays
 
 ## Home preparation
 
@@ -41,8 +38,7 @@ vagrant ssh ubuntu  # ssh into VM ubuntu using authentication preset by vagrant
 
 ### Tasks:
 - create empty directory for this workshop
-- download `Vagrantfile` for this workshop into your working directory
-  [https://github.com/prgcont/workshop-ansible/blob/master/lesson-1/Vagrantfile]
+- download `Vagrantfile` for this workshop into your working directory [from here](https://github.com/prgcont/workshop-ansible/blob/master/lesson-1/Vagrantfile)
 - start up your vagrant VMs defined in `Vagrantfile`
 - check that you can SSH from your hypervisor into both of your VMs
 - check that synced-folders are working
@@ -125,18 +121,21 @@ Remind yourself that:
 
 ### Tasks:
 
+- enter your Ubuntu VM with `vagrant ssh ubuntu`
 - set-up ssh-key authentication
 	- `ssh-keygen` leave default answers in wizard
 	- `cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys` copy public key to allow access to ubuntu VM
-	- `ssh-copy-id 172.29.29.15` copy public key to allow access to centos VM
+	- `ssh-copy-id 172.29.29.15` copy public key to allow access to centos VM (default password of `vagrant` user is `vagrant`)
 
 ## Ansible ad-hoc mode
 
 ### Tasks:
-- cd into `/vagrant_data` on VM `lesson-1_ubuntu`
+- cd into `/vagrant_data` on VM `ubuntu`
+- Hint: this directory is synchronized with directory `data-ubuntu` on your physical machine, so you can use your favourite editor
 - verify that both your VM's are reachable by ansible with `ansible all --inventory "172.29.29.14,172.29.29.15" -m ping`
 - use ansible ad-hoc mode to create unpriviledged system user `bob` with `/bin/bash` login shell, and generate ssh key for him on both VMs with one task
-	- `ansible all --inventory "172.29.29.14,172.29.29.15" -m user -a 'name=bob shell=/bin/bash generate_ssh_key=yes'`
+	- `ansible all --inventory "172.29.29.14,172.29.29.15" -m user -a 'name=bob shell=/bin/bash generate_ssh_key=yes' --become`
+- Try it again. You will see that there are no changes.
 
 ## Write down previous task's configuration
 
@@ -159,6 +158,11 @@ Remind yourself that:
 		inventory = hosts
 		...
 		```
+- add so called variable file into `group_vars/vm/my_variables.yml` for our new group of servers `vm` to tell Ansible that it should switch to root before doing anything
+	```
+	---
+	ansible_become: yes
+	```
 - create playbook with one task `bob_the_user.yml`, but add comment for him
 	```
 	---
