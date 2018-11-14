@@ -1,0 +1,7 @@
+[vm]
+
+[centos_machine]
+cent ansible_host=172.29.29.15 user=bob
+
+[ubuntu_machine]
+ubu ansible_host=172.29.29.14 user=john

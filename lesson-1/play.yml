@@ -1,0 +1,56 @@
+---
+- hosts: all
+  user: vagrant
+  become: yes
+  tasks:
+    - name: Remove the user (or whatever comment you want)
+      user:
+        name: "{{ user }}"
+        shell: /bin/bash
+        generate_ssh_key: yes
+        comment: "{{ user }} the User"
+        state: absent
+
+    - name: install webserver
+      yum:
+        name: httpd
+        state: installed
+      when:
+        - ansible_distribution == "CentOS"
+
+    - name: install webserver
+      apt:
+        name: apache2
+        state: installed
+      when:
+        - ansible_distribution == "Ubuntu"
+
+    - name: install cool stuff to do work
+      package:
+        name: "{{item}}"
+        state: installed
+      with_items:
+        - mc
+        - git
+        - vim
+        - tree
+
+    - name: my hostname
+      shell: hostname
+      register: hostname_resp
+      check_mode: no
+      tags:
+        - debug
+
+    - debug: var=hostname_resp
+      tags:
+        - debug
+
+    - mail:
+       to: root
+       message: "i like you"
+
+    - name: show me something
+      debug: msg="file is {{lookup('file', 'ansible.cfg')}}"
+      tags:
+        - tmp
