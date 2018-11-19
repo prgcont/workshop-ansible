@@ -1,0 +1,16 @@
+---
+
+#- name: install cool stuff to do work
+#  package:
+#    name: "{{item}}"
+#    state: installed
+#  with_items:
+#    - mc
+#    - git
+#    - vim
+#    - tree
+
+- name: install cool stuff to do work
+  package:
+    name: "{{mycooltools}}"
+    state: installed

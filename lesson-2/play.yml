@@ -1,0 +1,10 @@
+---
+- hosts: all
+  user: vagrant
+  become: yes
+  #tasks:
+  #  -
+  roles:
+    - mycooltools
+    - webserver
+    - helloworldpage
