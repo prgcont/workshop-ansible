@@ -1,0 +1,10 @@
+<Directory {{ vhost_root }}>
+  Order Allow,Deny
+  Allow from all
+
+  AuthType Basic
+  AuthName "Restricted Area"
+  AuthBasicProvider file
+  AuthUserFile {{ vhost_pass_file }}
+  Require valid-user
+</Directory>
