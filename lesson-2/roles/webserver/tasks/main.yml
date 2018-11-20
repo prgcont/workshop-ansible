@@ -1,0 +1,15 @@
+---
+
+- name: install apache httpd on centos
+  yum:
+    name: httpd
+    state: installed
+  when:
+    - ansible_distribution == "CentOS"
+
+- name: install apache httpd on centos
+  apt:
+    name: apache2
+    state: installed
+  when:
+    - ansible_distribution == "Ubuntu"

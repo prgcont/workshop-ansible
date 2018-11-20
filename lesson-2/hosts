@@ -1,0 +1,9 @@
+[vm]
+
+[centos_machine]
+centos ansible_host=172.29.29.15 ansible_ssh_private_key_file=.vagrant/machines/centos/virtualbox/private_key
+#user=bob
+
+[ubuntu_machine]
+ubuntu ansible_host=172.29.29.1 4ansible_ssh_private_key_file=.vagrant/machines/centos/virtualbox/private_key
+#user=john
