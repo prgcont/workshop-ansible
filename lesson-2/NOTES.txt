@@ -1,0 +1,33 @@
+vault pass is "abc"
+
+{{ lookup('password', inventory_dir + '/.secrets/pass_' + inventory_hostname + '_mongodb_' + mongodb_user_admin_name ) }}
+
+# .gitignore
+.secrets/*
+
+ansible-galaxy init mycooltools
+
+ansible-galaxy install geerlingguy.apache
+ls -d ~/.ansible/roles/geerlingguy.apache/
+
+
+htpasswd -nb test pass
+test:$apr1$JIc.nXrR$6QaezG4zD7NPebM/9iN4Y0
+
+mycooltools/
+├── defaults
+│   └── main.yml
+├── files
+├── handlers
+│   └── main.yml
+├── meta
+│   └── main.yml
+├── README.md
+├── tasks
+│   └── main.yml
+├── templates
+├── tests
+│   ├── inventory
+│   └── test.yml
+└── vars
+    └── main.yml

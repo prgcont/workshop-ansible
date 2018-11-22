@@ -1,0 +1,3 @@
+vhost_pass_file: /etc/apache2/
+vhost_file: /etc/apache2/sites-enabled/vhost.conf
+

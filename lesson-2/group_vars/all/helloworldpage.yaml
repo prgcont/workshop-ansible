@@ -1,2 +1,5 @@
 auth_user: prgcont
-auth_pass: ansible
+# vaulted
+#auth_pass:
+auth_pass: "{{vault_auth_pass}}"
+

@@ -1,3 +1,6 @@
-vhost_root: /var/www/htdocs/
-vhost_pass_file: /etc/httpd/conf.d/htpass
-# vhost_pass: 
+vhost_root: /var/www/html/
+vhost_pass_file: /etc/httpd/htpass
+vhost_pass: mojeheslo
+vhost_user: myuser
+vhost_file: /etc/httpd/conf.d/vhost.conf
+

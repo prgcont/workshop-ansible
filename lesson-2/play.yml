@@ -1,10 +1,14 @@
----
 - hosts: all
   user: vagrant
   become: yes
-  #tasks:
-  #  -
+  tasks:
+    - debug: msg="{{inventory_hostname}}"
   roles:
-    - mycooltools
-    - webserver
-    - helloworldpage
+    - role: mycooltools
+    - role: webserver
+      tags:
+        - webserver
+    - role: helloworldpage
+      tags:
+        - helloworldpage
+ 
